@@ -1,5 +1,6 @@
 package be.heh.kotlinproject_dstheh
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,7 +17,11 @@ class MainActivity : AppCompatActivity() {
     fun onMainClickManager(v:View){
         when(v.id){
             binding.btMainConnexion.id -> Toast.makeText(applicationContext,"connexion",Toast.LENGTH_LONG).show()
-            binding.tvMainRegister.id -> Toast.makeText(applicationContext,"register",Toast.LENGTH_LONG).show()
+            binding.tvMainRegister.id -> toRegister()
         }
+    }
+    fun toRegister(){
+        val iRegister=Intent(this,RegisterActivity::class.java)
+        startActivity(iRegister)
     }
 }
