@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">KotlinProject-DSTHEH</string>
+    <string name="heh_logo">heh logo</string>
+    <string name="heh_inventaire">HEH Inventaire</string>
+    <string name="connecte_toi">Connecte toi !</string>
+    <string name="email">Email</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="connexion">Connexion</string>
+    <string name="s_enregistrer">S\'enregistrer</string>
 </resources>

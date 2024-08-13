@@ -5,16 +5,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import be.heh.kotlindbsql.databinding.ActivityMainBinding
+import be.heh.kotlindbsql.databinding.ActivityMaterielSpecBinding
 
 class MaterielSpecActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMaterielSpecBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_materiel_spec)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding= ActivityMaterielSpecBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }

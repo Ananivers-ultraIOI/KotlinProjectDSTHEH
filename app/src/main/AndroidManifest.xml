@@ -13,28 +13,28 @@
         android:theme="@style/Theme.KotlinProjectDSTHEH"
         tools:targetApi="31">
         <activity
-            android:name=".MaterielRegisterActivity"
+            android:name="be.heh.kotlinproject_dstheh.MaterielRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MaterielSpecActivity"
+            android:name="be.heh.kotlinproject_dstheh.MaterielSpecActivity"
             android:exported="false" />
         <activity
-            android:name=".MaterielInfoSuperadminActivity"
+            android:name="be.heh.kotlinproject_dstheh.MaterielInfoSuperadminActivity"
             android:exported="false" />
         <activity
-            android:name=".MaterielInfoRwActivity"
+            android:name="be.heh.kotlinproject_dstheh.MaterielInfoRwActivity"
             android:exported="false" />
         <activity
-            android:name=".MaterielInfoActivity"
+            android:name="be.heh.kotlinproject_dstheh.MaterielInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".UserGestionActivity"
+            android:name="be.heh.kotlinproject_dstheh.UserGestionActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="be.heh.kotlinproject_dstheh.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="be.heh.kotlinproject_dstheh.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

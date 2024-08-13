@@ -5,6 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MaterielSpecActivity">
+    tools:context="be.heh.kotlinproject_dstheh.MaterielSpecActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

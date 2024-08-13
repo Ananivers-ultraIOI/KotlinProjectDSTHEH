@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bleufonce">#FF00008B</color>
+    <color name="bleu">#FF0080ff</color>
+    <color name="bleucobalt">#FF0047AB</color>
+    <color name="denim">#FF6F8FAF</color>
 </resources>

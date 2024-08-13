@@ -1,19 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    tools:context="be.heh.kotlinproject_dstheh.MainActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UseCompoundDrawables">
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/iv_main_logo"
+        android:contentDescription="@string/heh_logo"
+        android:src="@drawable/haute__cole_en_hainaut__logo__cropped"
+        tools:ignore="MissingConstraints" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_gravity="center_horizontal"
+        android:text="@string/heh_inventaire"
+        android:textColor="@color/bleufonce"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/connecte_toi"
+        android:textStyle="bold"
+        android:textSize="38sp"
+        android:layout_marginBottom="20dp"
+        tools:ignore="RtlHardcoded" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/email"
+        android:textColor="@color/bleu"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginBottom="20dp"
+        tools:ignore="RtlHardcoded" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_main_email"
+        android:autofillHints="emailAddress"
+        android:inputType="textEmailAddress"
+        tools:ignore="LabelFor"
+        android:layout_marginBottom="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/mot_de_passe"
+        android:textColor="@color/bleu"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginBottom="20dp"
+        tools:ignore="RtlHardcoded" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_main_pwd"
+        android:autofillHints="password"
+        android:inputType="textPassword"
+        tools:ignore="LabelFor"
+        android:layout_marginBottom="20dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/bt_main_connexion"
+        android:text="@string/connexion"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:onClick="onMainClickManager"
+        android:layout_marginBottom="20dp"
+        tools:ignore="OnClick" />
+    <TextView
+        android:id="@+id/tv_main_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="@string/s_enregistrer"
+        android:textColor="@color/colorstatelist"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onMainClickManager"
+        tools:ignore="RtlHardcoded" />
+</LinearLayout>
