@@ -7,4 +7,8 @@
     <string name="mot_de_passe">Mot de passe</string>
     <string name="connexion">Connexion</string>
     <string name="s_enregistrer">S\'enregistrer</string>
+    <string name="cr_er_un_compte">Créer un compte</string>
+    <string name="confirmer_le_mot_de_passe">Confirmer le mot de passe</string>
+    <string name="continuer">Continuer</string>
+    <string name="d_j_un_compte">Déjà un compte ?</string>
 </resources>

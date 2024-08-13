@@ -1,10 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.heh.kotlinproject_dstheh.RegisterActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:layout_gravity="center_horizontal"
+    tools:context="be.heh.kotlinproject_dstheh.RegisterActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UseCompoundDrawables">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/cr_er_un_compte"
+        android:textStyle="bold"
+        android:textSize="38sp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
+        tools:ignore="RtlHardcoded" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/email"
+        android:textColor="@color/bleu"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginBottom="20dp"
+        tools:ignore="RtlHardcoded" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_register_email"
+        android:autofillHints="emailAddress"
+        android:inputType="textEmailAddress"
+        tools:ignore="LabelFor"
+        android:layout_marginBottom="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/mot_de_passe"
+        android:textColor="@color/bleu"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginBottom="20dp"
+        tools:ignore="RtlHardcoded" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_register_pwd"
+        android:autofillHints="password"
+        android:inputType="textPassword"
+        tools:ignore="LabelFor"
+        android:layout_marginBottom="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/confirmer_le_mot_de_passe"
+        android:textColor="@color/bleu"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginBottom="20dp"
+        tools:ignore="RtlHardcoded" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_register_pwd_confirm"
+        android:autofillHints="password"
+        android:inputType="textPassword"
+        tools:ignore="LabelFor"
+        android:layout_marginBottom="20dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/bt_register"
+        android:text="@string/continuer"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:onClick="onRegisterClickManager"
+        android:layout_marginBottom="20dp"
+        tools:ignore="OnClick" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        tools:ignore="RtlHardcoded">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/d_j_un_compte"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginRight="10dp"
+            tools:ignore="RtlHardcoded" />
+        <TextView
+            android:id="@+id/tv_register_connexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/connexion"
+            android:textColor="@color/colorstatelist"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginRight="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onRegisterClickManager"
+            tools:ignore="OnClick,RtlHardcoded" />
+    </LinearLayout>
+</LinearLayout>
