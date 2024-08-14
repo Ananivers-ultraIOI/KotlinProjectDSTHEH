@@ -27,4 +27,5 @@
     <string name="quantity">Quantity :</string>
     <string name="s_lectionner_l_id">Sélectionner l\'id :</string>
     <string name="valider">Valider</string>
+    <string name="retour">Retour</string>
 </resources>

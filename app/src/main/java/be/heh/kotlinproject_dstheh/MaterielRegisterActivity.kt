@@ -27,12 +27,14 @@ import java.io.IOException
 class MaterielRegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMaterielRegisterBinding
     var mode=""
+    var account=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMaterielRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val prefs_datas= PreferenceManager.getDefaultSharedPreferences((applicationContext))
         mode = prefs_datas?.getString("mode", "null") ?: "default_value"
+        account = prefs_datas?.getString("account", "null") ?: "default_value"
     }
     fun onMRegisterClickManager(v:View){
         when(v.id) {
@@ -85,7 +87,6 @@ class MaterielRegisterActivity : AppCompatActivity() {
             }
         }
     }
-    @OptIn(DelicateCoroutinesApi::class)
     fun remove(m:MaterialsRecord){
         if (m.quantity==0){
             AsyncTask.execute{
@@ -95,10 +96,12 @@ class MaterielRegisterActivity : AppCompatActivity() {
                 ).build()
                 val dao = db.materialsDao()
                 dao.deleteMateriel(m)
-                Toast.makeText(applicationContext, "Item supprimer définitivement", Toast.LENGTH_SHORT).show()
             }
-            val iMa= Intent(this,MainActivity::class.java)
-            startActivity(iMa)
+            when(account){
+                "RW"->toRW()
+                "R"->toR()
+                "SA"->toSA()
+            }
         }else{
             m.quantity -= 1
             AsyncTask.execute{
@@ -108,10 +111,12 @@ class MaterielRegisterActivity : AppCompatActivity() {
                 ).build()
                 val dao = db.materialsDao()
                 dao.updateMateriel(m)
-                Toast.makeText(applicationContext, "Item retiré avec succès !", Toast.LENGTH_SHORT).show()
             }
-            val iMa= Intent(this,MainActivity::class.java)
-            startActivity(iMa)
+            when(account){
+                "RW"->toRW()
+                "R"->toR()
+                "SA"->toSA()
+            }
         }
     }
     fun add(m:MaterialsRecord){
@@ -123,10 +128,12 @@ class MaterielRegisterActivity : AppCompatActivity() {
             ).build()
             val dao = db.materialsDao()
             dao.updateMateriel(m)
-            Toast.makeText(applicationContext, "Item retiré avec succès !", Toast.LENGTH_SHORT).show()
         }
-        val iMa= Intent(this,MainActivity::class.java)
-        startActivity(iMa)
+        when(account){
+            "RW"->toRW()
+            "R"->toR()
+            "SA"->toSA()
+        }
     }
     fun addMaterial(t:String,m:String,sw:String,q:Int){
         val mat = MaterialsRecord(0, t, m, sw, q)
@@ -137,9 +144,23 @@ class MaterielRegisterActivity : AppCompatActivity() {
             ).build()
             val dao = db.materialsDao()
             dao.insertMaterial(mat)
-            Toast.makeText(applicationContext, "Item Créer avec succès", Toast.LENGTH_SHORT).show()
         }
-        val iMa= Intent(this,MainActivity::class.java)
+        when(account){
+            "RW"->toRW()
+            "R"->toR()
+            "SA"->toSA()
+        }
+    }
+    fun toR(){
+        val iMa= Intent(this,MaterielInfoActivity::class.java)
+        startActivity(iMa)
+    }
+    fun toRW(){
+        val iMa= Intent(this,MaterielInfoRwActivity::class.java)
+        startActivity(iMa)
+    }
+    fun toSA(){
+        val iMa= Intent(this,MaterielInfoSuperadminActivity::class.java)
         startActivity(iMa)
     }
 }

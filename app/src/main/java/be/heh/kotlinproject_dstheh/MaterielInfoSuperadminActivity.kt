@@ -83,16 +83,12 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
                     text = "Infos"
                     setTextAppearance(R.style.DeleteButton)
                     setOnClickListener {
-                        GlobalScope.launch(Dispatchers.IO) {
-                            val db = Room.databaseBuilder(
-                                applicationContext,
-                                MyDB::class.java, "MyDataBase"
-                            ).build()
-                            db.materialsDao().get(material.id)
-                            withContext(Dispatchers.Main) {
-                                table.removeView(tableRow)
-                            }
-                        }
+                        val editeur_datas = prefs_datas!!.edit()
+                        editeur_datas.putString("account", "SA")
+                        editeur_datas.putString("id",material.id.toString())
+                        editeur_datas.commit()
+                        val intent=Intent(this@MaterielInfoSuperadminActivity,MaterielSpecActivity::class.java)
+                        startActivity(intent)
                     }
                 }
                 tableRow.addView(infosButton)
@@ -132,6 +128,7 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
             1 ->{
                 val editeur_datas = prefs_datas!!.edit()
                 editeur_datas.putString("mode","REMISE")
+                editeur_datas.putString("account","SA")
                 editeur_datas.commit()
                 val iQr= Intent(this, QrActivity::class.java)
                 startActivity(iQr)
@@ -139,6 +136,7 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
             2 ->{
                 val editeur_datas = prefs_datas!!.edit()
                 editeur_datas.putString("mode","EMPRUN")
+                editeur_datas.putString("account","SA")
                 editeur_datas.commit()
                 val iQr= Intent(this, QrActivity::class.java)
                 startActivity(iQr)
@@ -151,6 +149,7 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
             1 ->{
                 val editeur_datas = prefs_datas!!.edit()
                 editeur_datas.putString("mode","REMISE")
+                editeur_datas.putString("account","SA")
                 editeur_datas.commit()
                 val iMr= Intent(this, MaterielRegisterActivity::class.java)
                 startActivity(iMr)
@@ -158,6 +157,7 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
             2 ->{
                 val editeur_datas = prefs_datas!!.edit()
                 editeur_datas.putString("mode","EMPRUN")
+                editeur_datas.putString("account","SA")
                 editeur_datas.commit()
                 val iMr= Intent(this, MaterielRegisterActivity::class.java)
                 startActivity(iMr)
