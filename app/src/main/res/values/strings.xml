@@ -16,4 +16,7 @@
     <string name="usergestion">usergestion</string>
     <string name="se_d_connecter">Se déconnecter</string>
     <string name="mat_riel">Matériel</string>
+    <string name="remise">Remise</string>
+    <string name="emprun">Emprun</string>
+    <string name="users">Users</string>
 </resources>

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Se deconnecter RW"
+        android:text="@string/se_d_connecter"
         android:textColor="@color/colorstatelist"
         android:textStyle="bold"
         android:textSize="17sp"
@@ -22,4 +22,41 @@
         android:focusable="true"
         android:onClick="onMatrwClickManager"
         tools:ignore="OnClick,RtlHardcoded" />
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2"
+        android:padding="16dp">
+    </TableLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/bt_matrw_remise"
+            android:text="@string/remise"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/buttonshape"
+            android:onClick="onMatrwClickManager"
+            android:layout_marginEnd="16dp"
+            tools:ignore="OnClick" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/bt_matrw_emprun"
+            android:text="@string/emprun"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/buttonshape"
+            android:onClick="onMatrwClickManager"
+            android:layout_marginStart="16dp"
+            tools:ignore="OnClick" />
+    </LinearLayout>
 </LinearLayout>

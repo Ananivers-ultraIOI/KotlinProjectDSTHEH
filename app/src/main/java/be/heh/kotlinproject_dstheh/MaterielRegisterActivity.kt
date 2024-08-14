@@ -14,5 +14,6 @@ class MaterielRegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMaterielRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
 }

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Se deconnecter R"
+        android:text="@string/se_d_connecter"
         android:textColor="@color/colorstatelist"
         android:textStyle="bold"
         android:textSize="17sp"
@@ -22,4 +22,11 @@
         android:focusable="true"
         android:onClick="onMatClickManager"
         tools:ignore="OnClick,RtlHardcoded" />
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2"
+        android:padding="16dp">
+    </TableLayout>
 </LinearLayout>
