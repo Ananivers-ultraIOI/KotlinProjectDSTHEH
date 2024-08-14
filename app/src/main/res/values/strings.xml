@@ -11,4 +11,9 @@
     <string name="confirmer_le_mot_de_passe">Confirmer le mot de passe</string>
     <string name="continuer">Continuer</string>
     <string name="d_j_un_compte">Déjà un compte ?</string>
+    <string name="minfo">minfo</string>
+    <string name="minforw">minforw</string>
+    <string name="usergestion">usergestion</string>
+    <string name="se_d_connecter">Se déconnecter</string>
+    <string name="mat_riel">Matériel</string>
 </resources>

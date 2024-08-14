@@ -6,7 +6,6 @@
     android:layout_gravity="center_horizontal"
     tools:context="be.heh.kotlinproject_dstheh.MainActivity"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="10dp"
     tools:ignore="UseCompoundDrawables">
     <ImageView
         android:layout_width="250dp"

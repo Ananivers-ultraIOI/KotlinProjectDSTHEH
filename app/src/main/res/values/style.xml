@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Custom styles for table elements -->
+    <style name="TableHeaderText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TableText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DeleteButton">
+        <item name="android:backgroundTint">#FF5555</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">8dp</item>
+    </style>
+</resources>

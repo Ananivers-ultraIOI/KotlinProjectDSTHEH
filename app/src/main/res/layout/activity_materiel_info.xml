@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.heh.kotlinproject_dstheh.MaterielInfoActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="10dp"
+    tools:context="be.heh.kotlinproject_dstheh.MaterielInfoActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UseCompoundDrawables">
+    <TextView
+        android:id="@+id/tv_mat_deconnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Se deconnecter R"
+        android:textColor="@color/colorstatelist"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onMatClickManager"
+        tools:ignore="OnClick,RtlHardcoded" />
+</LinearLayout>
