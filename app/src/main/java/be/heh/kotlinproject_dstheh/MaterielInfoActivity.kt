@@ -1,5 +1,6 @@
 package be.heh.kotlinproject_dstheh
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -26,6 +27,7 @@ import java.io.IOException
 
 class MaterielInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMaterielInfoBinding
+    @SuppressLint("SetTextI18n")
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,58 +42,65 @@ class MaterielInfoActivity : AppCompatActivity() {
                 val dao = db.materialsDao()
                 dao.get()
             }
+
             val table = binding.tableLayout
             table.removeAllViews()
+
             val headerRow = TableRow(this@MaterielInfoActivity)
-            val headerEmail= TextView(this@MaterielInfoActivity).apply {
-                text="Modèle"
+            val headerModèle = TextView(this@MaterielInfoActivity).apply {
+                text = "Modèle"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            val headerRights = TextView(this@MaterielInfoActivity).apply {
+            val headerQuantity = TextView(this@MaterielInfoActivity).apply {
                 text = "Quantité"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            val headerDelete= TextView(this@MaterielInfoActivity).apply {
-                text ="Info"
+            val headerInfo = TextView(this@MaterielInfoActivity).apply {
+                text = "Info"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            headerRow.addView(headerEmail)
-            headerRow.addView(headerRights)
-            headerRow.addView(headerDelete)
+
+            headerRow.addView(headerModèle)
+            headerRow.addView(headerQuantity)
+            headerRow.addView(headerInfo)
             table.addView(headerRow)
-            materials.forEach{ material ->
+
+            materials.forEach { material ->
                 val tableRow = TableRow(this@MaterielInfoActivity)
+
                 val modeleView = TextView(this@MaterielInfoActivity).apply {
-                    text=material.modele
-                    setTextAppearance(R.style.TableText)
-                    }
-                tableRow.addView(modeleView)
-                val quantityView = TextView(this@MaterielInfoActivity).apply {
-                    text=material.quantity.toString()
+                    text = material.modele
                     setTextAppearance(R.style.TableText)
                 }
                 tableRow.addView(modeleView)
+
+                val quantityView = TextView(this@MaterielInfoActivity).apply {
+                    text = material.quantity.toString()
+                    setTextAppearance(R.style.TableText)
+                }
                 tableRow.addView(quantityView)
-                    val infosButton = Button(this@MaterielInfoActivity).apply {
-                        text = "Infos"
-                        setTextAppearance(R.style.DeleteButton)
-                        setOnClickListener {
-                            GlobalScope.launch(Dispatchers.IO) {
-                                val db = Room.databaseBuilder(
-                                    applicationContext,
-                                    MyDB::class.java, "MyDataBase"
-                                ).build()
-                                db.materialsDao().get(material.id)
-                                withContext(Dispatchers.Main) {
-                                    table.removeView(tableRow)
-                                }
+
+                val infosButton = Button(this@MaterielInfoActivity).apply {
+                    text = "Infos"
+                    setTextAppearance(R.style.DeleteButton)
+                    setOnClickListener {
+                        GlobalScope.launch(Dispatchers.IO) {
+                            val db = Room.databaseBuilder(
+                                applicationContext,
+                                MyDB::class.java, "MyDataBase"
+                            ).build()
+                            db.materialsDao().get(material.id)
+                            withContext(Dispatchers.Main) {
+                                table.removeView(tableRow)
                             }
                         }
                     }
-                    tableRow.addView(infosButton)
-                    table.addView(tableRow)
                 }
+                tableRow.addView(infosButton)
+
+                table.addView(tableRow)
             }
+        }
     }
     fun onMatClickManager(v: View){
         when(v.id){

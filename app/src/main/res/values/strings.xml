@@ -19,4 +19,12 @@
     <string name="remise">Remise</string>
     <string name="emprun">Emprun</string>
     <string name="users">Users</string>
+    <string name="ajouter_un_nouvel_item">Ajouter un nouvel item</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="type">Type :</string>
+    <string name="mod_le">Modèle :</string>
+    <string name="site_web">Site web :</string>
+    <string name="quantity">Quantity :</string>
+    <string name="s_lectionner_l_id">Sélectionner l\'id :</string>
+    <string name="valider">Valider</string>
 </resources>

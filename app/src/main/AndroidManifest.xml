@@ -13,9 +13,6 @@
         android:theme="@style/Theme.KotlinProjectDSTHEH"
         tools:targetApi="31">
         <activity
-            android:name="be.heh.kotlinproject_dstheh.ManualAddMaterialActivity"
-            android:exported="false" />
-        <activity
             android:name="be.heh.kotlinproject_dstheh.QrActivity"
             android:exported="false" />
         <activity

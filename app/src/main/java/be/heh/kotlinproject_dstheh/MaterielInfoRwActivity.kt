@@ -24,14 +24,16 @@ import java.io.IOException
 
 class MaterielInfoRwActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMaterielInfoRwBinding
-    var prefs_datas: SharedPreferences? =null
+    var prefs_datas: SharedPreferences? = null
+
     @SuppressLint("SetTextI18n")
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMaterielInfoRwBinding.inflate(layoutInflater)
+        binding = ActivityMaterielInfoRwBinding.inflate(layoutInflater)
         setContentView(binding.root)
         prefs_datas = PreferenceManager.getDefaultSharedPreferences((applicationContext))
+
         GlobalScope.launch(Dispatchers.Main) {
             val materials = withContext(Dispatchers.IO) {
                 val db = Room.databaseBuilder(
@@ -41,38 +43,44 @@ class MaterielInfoRwActivity : AppCompatActivity() {
                 val dao = db.materialsDao()
                 dao.get()
             }
+
             val table = binding.tableLayout
             table.removeAllViews()
+
             val headerRow = TableRow(this@MaterielInfoRwActivity)
-            val headerEmail= TextView(this@MaterielInfoRwActivity).apply {
-                text="Modèle"
+            val headerModèle = TextView(this@MaterielInfoRwActivity).apply {
+                text = "Modèle"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            val headerRights = TextView(this@MaterielInfoRwActivity).apply {
+            val headerQuantity = TextView(this@MaterielInfoRwActivity).apply {
                 text = "Quantité"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            val headerDelete= TextView(this@MaterielInfoRwActivity).apply {
-                text ="Info"
+            val headerInfo = TextView(this@MaterielInfoRwActivity).apply {
+                text = "Info"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            headerRow.addView(headerEmail)
-            headerRow.addView(headerRights)
-            headerRow.addView(headerDelete)
+
+            headerRow.addView(headerModèle)
+            headerRow.addView(headerQuantity)
+            headerRow.addView(headerInfo)
             table.addView(headerRow)
-            materials.forEach{ material ->
+
+            materials.forEach { material ->
                 val tableRow = TableRow(this@MaterielInfoRwActivity)
+
                 val modeleView = TextView(this@MaterielInfoRwActivity).apply {
-                    text=material.modele
+                    text = material.modele
                     setTextAppearance(R.style.TableText)
                 }
                 tableRow.addView(modeleView)
+
                 val quantityView = TextView(this@MaterielInfoRwActivity).apply {
-                    text=material.quantity.toString()
+                    text = material.quantity.toString()
                     setTextAppearance(R.style.TableText)
                 }
-                tableRow.addView(modeleView)
                 tableRow.addView(quantityView)
+
                 val infosButton = Button(this@MaterielInfoRwActivity).apply {
                     text = "Infos"
                     setTextAppearance(R.style.DeleteButton)
@@ -84,30 +92,35 @@ class MaterielInfoRwActivity : AppCompatActivity() {
                             ).build()
                             db.materialsDao().get(material.id)
                             withContext(Dispatchers.Main) {
+                                // Suppression de la ligne dans l'UI principale si nécessaire
                                 table.removeView(tableRow)
                             }
                         }
                     }
                 }
                 tableRow.addView(infosButton)
+
+                // Ajoute la ligne dans la table
                 table.addView(tableRow)
             }
         }
     }
-    fun onMatrwClickManager(v: View){
-        when(v.id){
+
+    fun onMatrwClickManager(v: View) {
+        when (v.id) {
             binding.tvMatrwDeconnexion.id -> logout()
-            binding.btMatrwRemise.id -> toQr(1)
-            binding.btMatrwEmprun.id -> toQr(2)
+            binding.btMatrwRemise.id -> toMr(1)
+            binding.btMatrwEmprun.id -> toMr(2)
         }
     }
-    fun logout(){
+
+    fun logout() {
         try {
             val ous = openFileOutput("login.txt", MODE_PRIVATE)
             val tab = "".toByteArray()
             ous.write(tab)
             ous.close()
-            val iConnection= Intent(this,MainActivity::class.java)
+            val iConnection = Intent(this, MainActivity::class.java)
             startActivity(iConnection)
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
@@ -115,22 +128,43 @@ class MaterielInfoRwActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+
     @SuppressLint("CommitPrefEdits")
-    fun toQr(i:Int){
-        when(i){
-            1 ->{
+    fun toQr(i: Int) {
+        when (i) {
+            1 -> {
                 val editeur_datas = prefs_datas!!.edit()
-                editeur_datas.putString("mode","REMISE")
+                editeur_datas.putString("mode", "REMISE")
                 editeur_datas.commit()
-                val iQr= Intent(this, QrActivity::class.java)
+                val iQr = Intent(this, QrActivity::class.java)
                 startActivity(iQr)
             }
-            2 ->{
+            2 -> {
                 val editeur_datas = prefs_datas!!.edit()
-                editeur_datas.putString("mode","EMPRUN")
+                editeur_datas.putString("mode", "EMPRUN")
                 editeur_datas.commit()
-                val iQr= Intent(this, QrActivity::class.java)
+                val iQr = Intent(this, QrActivity::class.java)
                 startActivity(iQr)
+            }
+        }
+    }
+
+    @SuppressLint("CommitPrefEdits")
+    fun toMr(i: Int) {
+        when (i) {
+            1 -> {
+                val editeur_datas = prefs_datas!!.edit()
+                editeur_datas.putString("mode", "REMISE")
+                editeur_datas.commit()
+                val iMr = Intent(this, MaterielRegisterActivity::class.java)
+                startActivity(iMr)
+            }
+            2 -> {
+                val editeur_datas = prefs_datas!!.edit()
+                editeur_datas.putString("mode", "EMPRUN")
+                editeur_datas.commit()
+                val iMr = Intent(this, MaterielRegisterActivity::class.java)
+                startActivity(iMr)
             }
         }
     }

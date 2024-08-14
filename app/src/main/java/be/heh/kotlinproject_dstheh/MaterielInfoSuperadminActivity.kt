@@ -41,38 +41,44 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
                 val dao = db.materialsDao()
                 dao.get()
             }
+
             val table = binding.tableLayout
             table.removeAllViews()
+
             val headerRow = TableRow(this@MaterielInfoSuperadminActivity)
-            val headerEmail= TextView(this@MaterielInfoSuperadminActivity).apply {
-                text="Modèle"
+            val headerModèle = TextView(this@MaterielInfoSuperadminActivity).apply {
+                text = "Modèle"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            val headerRights = TextView(this@MaterielInfoSuperadminActivity).apply {
+            val headerQuantity = TextView(this@MaterielInfoSuperadminActivity).apply {
                 text = "Quantité"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            val headerDelete= TextView(this@MaterielInfoSuperadminActivity).apply {
-                text ="Info"
+            val headerInfo = TextView(this@MaterielInfoSuperadminActivity).apply {
+                text = "Info"
                 setTextAppearance(R.style.TableHeaderText)
             }
-            headerRow.addView(headerEmail)
-            headerRow.addView(headerRights)
-            headerRow.addView(headerDelete)
+
+            headerRow.addView(headerModèle)
+            headerRow.addView(headerQuantity)
+            headerRow.addView(headerInfo)
             table.addView(headerRow)
-            materials.forEach{ material ->
+
+            materials.forEach { material ->
                 val tableRow = TableRow(this@MaterielInfoSuperadminActivity)
+
                 val modeleView = TextView(this@MaterielInfoSuperadminActivity).apply {
-                    text=material.modele
+                    text = material.modele
                     setTextAppearance(R.style.TableText)
                 }
                 tableRow.addView(modeleView)
+
                 val quantityView = TextView(this@MaterielInfoSuperadminActivity).apply {
-                    text=material.quantity.toString()
+                    text = material.quantity.toString()
                     setTextAppearance(R.style.TableText)
                 }
-                tableRow.addView(modeleView)
                 tableRow.addView(quantityView)
+
                 val infosButton = Button(this@MaterielInfoSuperadminActivity).apply {
                     text = "Infos"
                     setTextAppearance(R.style.DeleteButton)
@@ -90,6 +96,7 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
                     }
                 }
                 tableRow.addView(infosButton)
+
                 table.addView(tableRow)
             }
         }
@@ -98,8 +105,8 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
         when(v.id){
             binding.tvMatsaDeconnexion.id -> logout()
             binding.btMatsaUser.id -> toUsers()
-            binding.btMatsaRemise.id -> toQr(1)
-            binding.btMatsaEmprun.id -> toQr(2)
+            binding.btMatsaRemise.id -> toMr(1)
+            binding.btMatsaEmprun.id -> toMr(2)
         }
     }
     fun logout(){
@@ -135,6 +142,25 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
                 editeur_datas.commit()
                 val iQr= Intent(this, QrActivity::class.java)
                 startActivity(iQr)
+            }
+        }
+    }
+    @SuppressLint("CommitPrefEdits")
+    fun toMr(i:Int){
+        when(i){
+            1 ->{
+                val editeur_datas = prefs_datas!!.edit()
+                editeur_datas.putString("mode","REMISE")
+                editeur_datas.commit()
+                val iMr= Intent(this, MaterielRegisterActivity::class.java)
+                startActivity(iMr)
+            }
+            2 ->{
+                val editeur_datas = prefs_datas!!.edit()
+                editeur_datas.putString("mode","EMPRUN")
+                editeur_datas.commit()
+                val iMr= Intent(this, MaterielRegisterActivity::class.java)
+                startActivity(iMr)
             }
         }
     }
