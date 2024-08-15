@@ -89,12 +89,19 @@ class MaterielSpecActivity : AppCompatActivity() {
                 text = "Site Web : "
                 setTextAppearance(R.style.TableHeaderText)
             }
-            val sitewebView = TextView(this@MaterielSpecActivity).apply {
-                text = materials.website
-                setTextAppearance(R.style.TableText)
+            val webButton = Button(this@MaterielSpecActivity).apply {
+                text = "Vers le site"
+                setTextAppearance(R.style.DeleteButton)
+                setOnClickListener {
+                    val editeur_datas = prefs_datas!!.edit()
+                    editeur_datas.putString("web",materials.website)
+                    editeur_datas.commit()
+                    val intent=Intent(this@MaterielSpecActivity,WebviewActivity::class.java)
+                    startActivity(intent)
+                }
             }
             sitewebRow.addView(headerSiteweb)
-            sitewebRow.addView(sitewebView)
+            sitewebRow.addView(webButton)
             table.addView(sitewebRow)
             val qantityRow = TableRow(this@MaterielSpecActivity)
             val headerQuantite = TextView(this@MaterielSpecActivity).apply {
