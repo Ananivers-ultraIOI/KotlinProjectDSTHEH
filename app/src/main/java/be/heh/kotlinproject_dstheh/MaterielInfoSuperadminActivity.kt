@@ -123,8 +123,8 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
         when(v.id){
             binding.tvMatsaDeconnexion.id -> logout()
             binding.btMatsaUser.id -> toUsers()
-            binding.btMatsaRemise.id -> toMr(1)
-            binding.btMatsaEmprun.id -> toMr(2)
+            binding.btMatsaRemise.id -> toQr(1)
+            binding.btMatsaEmprun.id -> toQr(2)
         }
     }
     fun logout(){

@@ -12,6 +12,8 @@ interface MaterialsDao {
     fun get():List<MaterialsRecord>
     @Query("SELECT * FROM MaterialTable WHERE id = :id")
     fun get(id: Int): MaterialsRecord
+    @Query("SELECT * FROM MaterialTable WHERE modele = :modele")
+    fun getByModele(modele: String): MaterialsRecord
     @Insert
     fun insertMaterial(vararg listCategories: MaterialsRecord)
     @Update

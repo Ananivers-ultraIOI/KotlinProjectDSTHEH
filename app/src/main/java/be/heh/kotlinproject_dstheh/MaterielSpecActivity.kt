@@ -121,7 +121,7 @@ class MaterielSpecActivity : AppCompatActivity() {
             sitewebRow.addView(headerSiteweb)
             sitewebRow.addView(webButton)
             table.addView(sitewebRow)
-            val str =materials.id.toString()+"#"+materials.type+"#"+materials.modele+"\n"+materials.website
+            val str =materials.website+"\n#"+materials.id.toString()+"#"+materials.type+"#"+materials.modele+"#"+materials.quantity.toString()
             val ivQrCode=findViewById<ImageView>(R.id.ivQRCode)
             val bitmap=generateQRCode(str)
             ivQrCode.setImageBitmap(bitmap)
