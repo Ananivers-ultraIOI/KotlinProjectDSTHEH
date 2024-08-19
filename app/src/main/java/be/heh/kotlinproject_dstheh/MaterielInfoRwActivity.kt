@@ -104,8 +104,8 @@ class MaterielInfoRwActivity : AppCompatActivity() {
     fun onMatrwClickManager(v: View) {
         when (v.id) {
             binding.tvMatrwDeconnexion.id -> logout()
-            binding.btMatrwRemise.id -> toMr(1)
-            binding.btMatrwEmprun.id -> toMr(2)
+            binding.btMatrwRemise.id -> toQr(1)
+            binding.btMatrwEmprun.id -> toQr(2)
         }
     }
 
@@ -159,6 +159,7 @@ class MaterielInfoRwActivity : AppCompatActivity() {
             }
             2 -> {
                 val editeur_datas = prefs_datas!!.edit()
+                editeur_datas.putString("mode", "EMPRUN")
                 editeur_datas.putString("account", "RW")
                 editeur_datas.commit()
                 val iMr = Intent(this, MaterielRegisterActivity::class.java)

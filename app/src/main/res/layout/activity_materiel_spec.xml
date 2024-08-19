@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="10dp"
+    android:padding="15dp"
     tools:context="be.heh.kotlinproject_dstheh.MaterielSpecActivity"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="UseCompoundDrawables">
@@ -15,6 +15,13 @@
         android:stretchColumns="0,1"
         android:padding="16dp">
     </TableLayout>
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/ivQRCode"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/qr_code"/>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_gravity="center_horizontal"
         android:id="@+id/bt_mspec_minfo"

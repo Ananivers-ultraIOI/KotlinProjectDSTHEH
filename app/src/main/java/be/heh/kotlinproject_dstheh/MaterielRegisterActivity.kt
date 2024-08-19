@@ -89,17 +89,20 @@ class MaterielRegisterActivity : AppCompatActivity() {
     }
     fun remove(m:MaterialsRecord){
         if (m.quantity==0){
-            AsyncTask.execute{
-                val db = Room.databaseBuilder(
-                    applicationContext,
-                    MyDB::class.java, "MyDataBase"
-                ).build()
-                val dao = db.materialsDao()
-                dao.deleteMateriel(m)
+            if(account=="SA"){
+                AsyncTask.execute{
+                    val db = Room.databaseBuilder(
+                        applicationContext,
+                        MyDB::class.java, "MyDataBase"
+                    ).build()
+                    val dao = db.materialsDao()
+                    dao.deleteMateriel(m)
+                }
+            }else{
+                Toast.makeText(applicationContext, "Vous n'avez pas le droit de supprimer un item", Toast.LENGTH_SHORT).show()
             }
             when(account){
                 "RW"->toRW()
-                "R"->toR()
                 "SA"->toSA()
             }
         }else{
@@ -114,7 +117,6 @@ class MaterielRegisterActivity : AppCompatActivity() {
             }
             when(account){
                 "RW"->toRW()
-                "R"->toR()
                 "SA"->toSA()
             }
         }
@@ -131,7 +133,6 @@ class MaterielRegisterActivity : AppCompatActivity() {
         }
         when(account){
             "RW"->toRW()
-            "R"->toR()
             "SA"->toSA()
         }
     }
@@ -147,13 +148,8 @@ class MaterielRegisterActivity : AppCompatActivity() {
         }
         when(account){
             "RW"->toRW()
-            "R"->toR()
             "SA"->toSA()
         }
-    }
-    fun toR(){
-        val iMa= Intent(this,MaterielInfoActivity::class.java)
-        startActivity(iMa)
     }
     fun toRW(){
         val iMa= Intent(this,MaterielInfoRwActivity::class.java)

@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="10dp"
+    android:padding="15dp"
     tools:context="be.heh.kotlinproject_dstheh.MaterielInfoSuperadminActivity"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="UseCompoundDrawables">

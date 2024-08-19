@@ -58,10 +58,15 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
                 text = "Info"
                 setTextAppearance(R.style.TableHeaderText)
             }
+            val headerDelete = TextView(this@MaterielInfoSuperadminActivity).apply {
+                text = "Supprimer ?"
+                setTextAppearance(R.style.TableHeaderText)
+            }
 
             headerRow.addView(headerModèle)
             headerRow.addView(headerQuantity)
             headerRow.addView(headerInfo)
+            headerRow.addView(headerDelete)
             table.addView(headerRow)
 
             materials.forEach { material ->
@@ -92,6 +97,23 @@ class MaterielInfoSuperadminActivity : AppCompatActivity() {
                     }
                 }
                 tableRow.addView(infosButton)
+                val deleteButton = Button(this@MaterielInfoSuperadminActivity).apply {
+                    text = "Delete"
+                    setTextAppearance(R.style.DeleteButton)
+                    setOnClickListener {
+                        GlobalScope.launch(Dispatchers.IO) {
+                            val db = Room.databaseBuilder(
+                                applicationContext,
+                                MyDB::class.java, "MyDataBase"
+                            ).build()
+                            db.materialsDao().deleteMateriel(material)
+                            withContext(Dispatchers.Main) {
+                                table.removeView(tableRow)
+                            }
+                        }
+                    }
+                }
+                tableRow.addView(deleteButton)
 
                 table.addView(tableRow)
             }
