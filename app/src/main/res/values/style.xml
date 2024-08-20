@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Custom styles for table elements -->
     <style name="TableHeaderText">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>

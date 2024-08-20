@@ -94,8 +94,6 @@ class MaterielInfoRwActivity : AppCompatActivity() {
                     }
                 }
                 tableRow.addView(infosButton)
-
-                // Ajoute la ligne dans la table
                 table.addView(tableRow)
             }
         }
